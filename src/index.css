@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Custom Maroon Palette Overrides (mapped to fuchsia) */
+  --color-fuchsia-50: #fef2f3;
+  --color-fuchsia-100: #ffe4e6;
+  --color-fuchsia-200: #fecdd3;
+  --color-fuchsia-300: #fda4af;
+  --color-fuchsia-400: #e0455f; /* Rich light maroon/rose */
+  --color-fuchsia-500: #b91c33; /* Vibrant core maroon */
+  --color-fuchsia-600: #991b1b;
+  --color-fuchsia-700: #7f1d1d;
+  --color-fuchsia-800: #5b1111;
+  --color-fuchsia-900: #420808;
+  --color-fuchsia-950: #270303;
+
+  /* Custom Crimson-Ruby Palette Overrides (mapped to violet) */
+  --color-violet-50: #fff5f5;
+  --color-violet-100: #ffe3e3;
+  --color-violet-200: #ffc9c9;
+  --color-violet-300: #ffa8a8;
+  --color-violet-400: #ff6b6b; /* Vibrant ruby-rose */
+  --color-violet-500: #fa5252; /* Core ruby */
+  --color-violet-600: #e03131;
+  --color-violet-700: #c92a2a;
+  --color-violet-800: #961c1c;
+  --color-violet-900: #5f1111;
+  --color-violet-950: #3b0a0a;
+
+  /* Custom Warm Amber-Gold Palette Overrides (mapped to amber) */
+  --color-amber-50: #fff9db;
+  --color-amber-100: #fff3bf;
+  --color-amber-200: #ffec99;
+  --color-amber-300: #ffe066;
+  --color-amber-400: #ffd43b; /* Rich gold */
+  --color-amber-500: #fcc419;
+  --color-amber-600: #fab005;
+  --color-amber-700: #f08c00;
+  --color-amber-800: #e67700;
+  --color-amber-900: #d9480f;
+  --color-amber-950: #8c2000;
+}
+
+/* Custom Webkit Scrollbars matching Slate Theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #120204; /* Deep velvet wine */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3b090f; /* Rich dark burgundy scrollbar */
+  border-radius: 99px;
+  border: 2px solid #120204;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b91c33; /* Vibrant maroon on hover */
+}
+
+/* Custom Text Selection Highlight */
+::selection {
+  background-color: rgba(185, 28, 51, 0.3); /* warm maroon translucency */
+  color: #F8FAFC;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  background-color: #120204;
+  color: #F8FAFC;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Typing Cursor blink rate */
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+.animate-blink {
+  animation: blink 0.75s step-end infinite;
+}
+
+/* Print Overrides for Resume PDF generation */
+@media print {
+  /* Hide everything on the portfolio */
+  body * {
+    visibility: hidden !important;
+  }
+  
+  /* Select and make only the resume card printable */
+  #printable-area, #printable-area * {
+    visibility: visible !important;
+  }
+  
+  #printable-area {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    color: #000000 !important;
+    background-color: #ffffff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Force color print rules */
+  h1, h2, h3, h4, h5, p, span, li, a {
+    color: #000000 !important;
+    text-shadow: none !important;
+  }
+
+  a {
+    text-decoration: underline !important;
+  }
+
+  /* Strip background color tags and outline containers neatly */
+  .bg-white\/\[0\.01\],
+  .bg-slate-950,
+  .bg-slate-900,
+  .bg-slate-900\/40,
+  .p-4,
+  .p-5,
+  .p-6,
+  .rounded-2xl,
+  .rounded-xl {
+    background-color: transparent !important;
+    border: 1px solid #cbd5e1 !important; /* slate-300 */
+    box-shadow: none !important;
+  }
+}
